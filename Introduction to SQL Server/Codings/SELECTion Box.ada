@@ -209,4 +209,117 @@ FROM
   -- Return rows where demand_loss_mw is not missing or unknown   
 WHERE 
   demand_loss_mw IS NOT NULL;
+ 
+-- Exercise
+-- Exploring classic rock songs
+-- It's time to rock and roll! In this set of exercises, you'll use the songlist table, which contains songs featured on the playlists of 25 classic rock radio stations.
+
+-- First, let's get familiar with the data.
+
+-- Instructions 1/3
+
+-- Retrieve the song, artist, and release_year columns from the songlist table.
+-- Retrieve the song, artist and release_year columns
+SELECT 
+  song, 
+  artist, 
+  release_year
+FROM
+  songlist
+
+-- Instructions 2/3
+--Make sure there are no NULL values in the release_year column.
+-- Retrieve the song, artist and release_year columns
+SELECT 
+  song, 
+  artist, 
+  release_year 
+FROM 
+  songlist 
+  -- Ensure there are no missing or unknown values in the release_year column
+WHERE 
+  release_year IS NOT NULL 
+
+-- Instructions 3/3 
+--Order the results by artist and release_year.
+-- Retrieve the song,artist and release_year columns
+SELECT 
+  song, 
+  artist, 
+  release_year 
+FROM 
+  songlist 
+  -- Ensure there are no missing or unknown values in the release_year column
+WHERE 
+  release_year IS NOT NULL 
+  -- Arrange the results by the artist and release_year columns
+ORDER BY 
+  artist, 
+  release_year;
+
+-- Exercise
+-- Exploring classic rock songs - AND/OR
+-- Having familiarized yourself with the songlist table, you'll now extend your WHERE clause from the previous exercise.
+
+-- Instructions 1/2
+
+-- Extend the WHERE clause so that the results are those with a release_year greater than or equal to 1980 and less than or equal to 1990.
+SELECT 
+  song, 
+  artist, 
+  release_year
+FROM 
+  songlist 
+WHERE 
+  -- Retrieve records greater than and including 1980
+  release_year >= 1980 
+  -- Also retrieve records up to and including 1990
+  AND release_year <= 1990 
+ORDER BY 
+  artist, 
+  release_year;
+
+-- Instructions 2/2
+--Update your query to use an OR instead of an AND.
+
+SELECT 
+  song, 
+  artist, 
+  release_year
+FROM 
+  songlist 
+WHERE 
+  -- Retrieve records greater than and including 1980
+  release_year >= 1980 
+  -- Replace AND with OR  
+  OR release_year <= 1990 
+ORDER BY 
+  artist, 
+  release_year;
   
+-- Exercise
+-- Using parentheses in your queries
+-- You can use parentheses to make the intention of your code clearer. This becomes very important when using AND and OR clauses, to ensure your queries return the exact subsets you need.
+
+-- Instructions
+
+-- Select all artists beginning with B who released tracks in 1986, but also retrieve any records where the release_year is greater than 1990.
+SELECT 
+  artist, 
+  release_year, 
+  song 
+FROM 
+  songlist 
+  -- Choose the correct artist and specify the release year
+WHERE 
+  (
+    artist LIKE 'B%' 
+    AND release_year = 1986
+  ) 
+  -- Or return all songs released after 1990
+  OR release_year > 1990 
+  -- Order the results 
+ORDER BY 
+  release_year, 
+  artist, 
+  song;
