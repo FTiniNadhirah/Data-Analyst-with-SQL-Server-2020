@@ -1,4 +1,4 @@
-# Data-Analyst-with-SQL-Server-2020
+# Data Analyst with SQL Server 2020
 This is about learning data analyst with SQL server courses in DataCamp. All the answers given written by myself
 
 # All notes, datasets and codings are stored in this repositories
